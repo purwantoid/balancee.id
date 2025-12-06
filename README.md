@@ -110,4 +110,4 @@ We welcome contributions! Please read our `CONTRIBUTING.md` for details on our c
 
 ## 📄 License
 
-The Balancee.id project is open-sourced software licensed under the **[MIT license](https://opensource.org/licenses/MIT)**.
+The Balancee.id project is semi open-sourced software licensed under the **[MIT license](https://opensource.org/licenses/MIT)**.
