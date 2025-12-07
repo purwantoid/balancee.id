@@ -10,7 +10,7 @@ import { logout } from '@/routes';
 import { edit } from '@/routes/profile';
 import { type User } from '@/types';
 import { Link, router } from '@inertiajs/react';
-import { LogOut, Settings } from 'lucide-react';
+import { BadgeCheck, Bell, CreditCard, LogOut, Settings, Sparkles } from 'lucide-react';
 
 interface UserMenuContentProps {
     user: User;
@@ -31,6 +31,28 @@ export function UserMenuContent({ user }: UserMenuContentProps) {
                     <UserInfo user={user} showEmail={true} />
                 </div>
             </DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+                <DropdownMenuItem>
+                    <Sparkles />
+                    Upgrade to Pro
+                </DropdownMenuItem>
+            </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+                <DropdownMenuItem>
+                    <BadgeCheck />
+                    Account
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                    <CreditCard />
+                    Billing
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                    <Bell />
+                    Notifications
+                </DropdownMenuItem>
+            </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
                 <DropdownMenuItem asChild>

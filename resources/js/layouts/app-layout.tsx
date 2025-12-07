@@ -7,6 +7,7 @@ interface AppLayoutProps {
     breadcrumbs?: BreadcrumbItem[];
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export default ({ children, breadcrumbs, ...props }: AppLayoutProps) => (
     <AppLayoutTemplate breadcrumbs={breadcrumbs} {...props}>
         {children}
