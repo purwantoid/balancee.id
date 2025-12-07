@@ -28,7 +28,7 @@ services:
       - 8.8.8.8
       - 9.9.9.9
     networks:
-      - laravel_starter_network
+      - balancee_network
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
@@ -55,7 +55,7 @@ services:
       - 8.8.8.8
       - 9.9.9.9
     networks:
-      - laravel_starter_network
+      - balancee_network
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
@@ -74,7 +74,18 @@ services:
     volumes:
       - './infrastructure/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
     networks:
-      - laravel_starter_network
+      - balancee_network
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    platform: linux/amd64
+    ports:
+      - '${FORWARD_SQLSERVER_PORT:-1433}:1433'
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: '${DB_PASSWORD}'
+    networks:
+      - balancee_network
 
   mailpit:
     image: 'axllent/mailpit:latest'
@@ -83,7 +94,7 @@ services:
       - '${FORWARD_MAILPIT_PORT:-1025}:1025'
       - '${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025'
     networks:
-      - laravel_starter_network
+      - balancee_network
 
   web:
     build: infrastructure/nginx/
@@ -103,7 +114,7 @@ services:
       - 8.8.8.8
       - 9.9.9.9
     networks:
-      - laravel_starter_network
+      - balancee_network
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
@@ -112,10 +123,10 @@ services:
     ports:
       - '${FORWARD_REDIS_PORT:-6379}:6379'
     networks:
-      - laravel_starter_network
+      - balancee_network
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
 networks:
-  laravel_starter_network:
+  balancee_network:
     driver: bridge

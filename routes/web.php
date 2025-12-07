@@ -7,7 +7,6 @@ use Inertia\Inertia;
 
 Route::get('/', function ()
 {
-  echo phpinfo();die();
   return Inertia::render('welcome');
 })->name('home');
 
